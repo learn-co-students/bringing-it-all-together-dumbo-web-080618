@@ -19,6 +19,7 @@ describe "Dog" do
 
   describe "attributes" do
     it 'has a name and a breed' do
+      # binding.pry 
       dog = Dog.new(name: "Fido", breed: "lab")
       expect(dog.name).to eq("Fido")
       expect(dog.breed).to eq("lab")
