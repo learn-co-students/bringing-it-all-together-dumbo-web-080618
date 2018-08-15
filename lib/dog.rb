@@ -39,11 +39,8 @@ class Dog
 
       if self.id == nil
         DB[:conn].execute(no_id)
-        instance = <<-SQL
-        		SELECT * FROM dogs ORDER BY id DESC LIMIT 1;
-        SQL
-        new_dog_array = DB[:conn].execute(instance)
-        self.id = new_dog_array[0][0]
+
+        self.id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
       else
         update
       end
